@@ -151,7 +151,7 @@ Write a SQL command to **update the city named `"Nashville-Davidson"` to `"Nashv
 ```sql
 UPDATE city
 SET Name = 'Nashville'
-WHERE Name = 'Nashville-Davidson';
+WHERE Name = 'Nashville-Davidson' AND CountryCode = 'USA';
 ```
 
 ### Screenshot
