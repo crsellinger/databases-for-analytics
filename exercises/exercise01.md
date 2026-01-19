@@ -27,16 +27,17 @@
 Why were these data types selected?
 
 ### Answer
-_Write your explanation here._
+
+population should be an integer as you can't have half a person and life expectancy is a decimal because it is an average, which should be a decimal for more accurate life expectancy
 
 ### Screenshot
-_Show the table structure or DESCRIBE output._
+![describe country population](image.png)
+
+![describe country population](image-1.png)
 
 ```sql
 DESCRIBE country;
 ```
-
-![Q1 Screenshot](screenshots/q1_datatypes.png)
 
 ---
 
@@ -46,15 +47,16 @@ DESCRIBE country;
 Why do you think this data type was selected?
 
 ### Answer
-_Write your explanation here._
+
+smallint is only 2 bytes and since this number will only be four digits, this data type was used.
 
 ### Screenshot
+
+![desctibe country indepyear](image-2.png)
 
 ```sql
 DESCRIBE country;
 ```
-
-![Q2 Screenshot](screenshots/q2_indepyear.png)
 
 ---
 
@@ -64,7 +66,8 @@ DESCRIBE country;
 Explain why your proposed data type might be better in some situations.
 
 ### Answer
-_Write your explanation here._
+
+You can use int if you're not worried about memory in you system.
 
 ---
 
@@ -82,7 +85,7 @@ ORDER BY Name;
 
 ### Screenshot
 
-![Q4 Screenshot](screenshots/q4_cities_sorted.png)
+![Q4](image-3.png)
 
 ---
 
@@ -100,7 +103,7 @@ ORDER BY GovernmentForm;
 
 ### Screenshot
 
-![Q5 Screenshot](screenshots/q5_government_forms.png)
+![Q5 screenshot](image-4.png)
 
 ---
 
@@ -118,7 +121,7 @@ WHERE Continent = 'Oceania';
 
 ### Screenshot
 
-![Q6 Screenshot](screenshots/q6_oceania.png)
+![Q6](image-5.png)
 
 ---
 
@@ -135,7 +138,7 @@ FROM city;
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_city_countrycode.png)
+![Q7](image-6.png)
 
 ---
 
@@ -153,7 +156,7 @@ WHERE Name = 'Nashville-Davidson';
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_update_city.png)
+![Q8](image-7.png)
 
 ---
 
@@ -171,7 +174,7 @@ VALUES ('NAR', 'Narnia', 'Europe', 'Fantasy', 1000000);
 
 ### Screenshot
 
-![Q9 Screenshot](screenshots/q9_insert_narnia.png)
+![Q9](image-8.png)
 
 ---
 
@@ -188,4 +191,4 @@ WHERE Code = 'NAR';
 
 ### Screenshot
 
-![Q10 Screenshot](screenshots/q10_delete_narnia.png)
+![Q10](image-9.png)
