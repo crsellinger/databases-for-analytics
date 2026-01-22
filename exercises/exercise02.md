@@ -1,6 +1,6 @@
 # Exercise 02: World Database – Joins, Grouping, and Data Quality
 
-- Name:
+- Name: Caleb Sellinger
 - Course: Database for Analytics
 - Module: 2
 - Database Used: World Database (PostgreSQL)
@@ -23,16 +23,16 @@
 When importing records from `worldPGSQL.sql`, **how many cities were imported**?
 
 ### Answer
-_Write the number of cities imported._
+4079
 
 ### Screenshot
-_Show evidence of how you determined this (for example, a COUNT query)._
 
 ```sql
--- Your SQL here
+select count(ID)
+from city
 ```
 
-![Q1 Screenshot](screenshots/q1_city_count.png)
+![teehee](image-10.png)
 
 ---
 
@@ -43,12 +43,14 @@ Using the World database, write the SQL command to **display each country name a
 ### SQL
 
 ```sql
--- Your SQL here
+select c.Name, cl.Language
+from country c
+left join countrylanguage cl on c.Code = cl.CountryCode
 ```
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_country_languages.png)
+![mysterious cube](image-11.png)
 
 ---
 
@@ -59,12 +61,14 @@ Using the World database, write the SQL command to **display each country name a
 ### SQL
 
 ```sql
--- Your SQL here
+select c.Name, cl.Language, cl.IsOfficial
+from country c
+left join countrylanguage cl on c.Code = cl.CountryCode
 ```
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_official_languages.png)
+![circular redundancy](image-12.png)
 
 ---
 
@@ -88,7 +92,8 @@ ON country.code = countrylanguage.countrycode;
 **In your own words**, describe what data the **second query returns that the first query does not**.
 
 ### Answer
-_Write your explanation here._
+
+The second query only selects non-matching records from the country table.
 
 ---
 
@@ -100,12 +105,13 @@ Do **not** repeat any form of government more than once.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT distinct GovernmentForm
+FROM country
 ```
 
 ### Screenshot
 
-![Q5 Screenshot](screenshots/q5_government_forms.png)
+![Snowman without a top hat](image-13.png)
 
 ---
 
@@ -117,12 +123,14 @@ Label the column **"City or Country Name"**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT concat(city.Name,', ',country.Name) AS 'City or Country Name'
+FROM city
+INNER join country on country.Code = city.CountryCode
 ```
 
 ### Screenshot
 
-![Q6 Screenshot](screenshots/q6_union_city_country.png)
+![Easter Egg](image-15.png)
 
 ---
 
@@ -134,12 +142,15 @@ Be sure to **sort by country name**.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT c.Name, count(cl.Language) AS '# of Languages'
+FROM country c
+LEFT JOIN countrylanguage cl ON c.Code = cl.CountryCode
+GROUP BY c.Name
 ```
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_language_count_by_country.png)
+![Now this is pod racing](image-16.png)
 
 ---
 
@@ -151,12 +162,15 @@ Be sure to **sort by language name**.
 ### SQL
 
 ```sql
--- Your SQL here
+select countrylanguage.Language, count(country.Code) as '# of Countries'
+from countrylanguage
+left join country on country.Code = countrylanguage.CountryCode
+group by countrylanguage.Language
 ```
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_language_country_count.png)
+![Ding Dong](image-17.png)
 
 ---
 
@@ -169,12 +183,18 @@ Using the World database, write the SQL command to **list countries that have mo
 ### SQL
 
 ```sql
--- Your SQL here
+select c.Name, count(cl.Language), count(cl.IsOfficial)
+from country c
+inner join countrylanguage cl on cl.CountryCode = c.Code
+where cl.IsOfficial = 'T'
+group by c.Name
+having count(cl.Language) > 2
+order by count(cl.Language) DESC
 ```
 
 ### Screenshot
 
-![Q9 Screenshot](screenshots/q9_multiple_official_languages.png)
+![Greenland](image-18.png)
 
 ---
 
@@ -187,12 +207,14 @@ Using the World database, write the SQL command to **find cities where the distr
 ### SQL
 
 ```sql
--- Your SQL here
+select c.Name, c.District
+from city c
+where c.District like '–' or c.District = null or c.District = ''
 ```
 
 ### Screenshot
 
-![Q10 Screenshot](screenshots/q10_missing_districts.png)
+![Mug Rootbeer](image-19.png)
 
 ---
 
@@ -205,9 +227,10 @@ Using the World database, write the SQL command to **calculate the percentage of
 ### SQL
 
 ```sql
--- Your SQL here
+select count(case when District like '–' or District = '' then 1 end)*100/ count(ID)
+from city
 ```
 
 ### Screenshot
 
-![Q11 Screenshot](screenshots/q11_missing_district_percentage.png)
+![Joopy](image-20.png)
