@@ -1,6 +1,6 @@
 # Exercise 03: MongoDB – Document Queries and Analysis
 
-- Name:
+- Name: Caleb Sellinger
 - Course: Database for Analytics
 - Module: 3
 - Database Used: MongoDB
@@ -24,16 +24,16 @@
 When importing the documents from `restaurants-json.json`, **how many documents were imported into your collection**?
 
 ### Answer
-_Write the number of documents imported._
+25358
 
 ### Screenshot
 _Show evidence of how you determined this (for example, a count query)._
 
 ```javascript
-// Your MongoDB command here
+db.restaurants.find().count()
 ```
 
-![Q1 Screenshot](screenshots/q1_document_count.png)
+!![This image](image-21.png)
 
 ---
 
@@ -44,12 +44,16 @@ Before writing queries on the data, **what command do you use to set the MongoDB
 ### MongoDB Command
 
 ```javascript
-// Your MongoDB command here
+use 44661
 ```
+
+Although clicking the Open MongoDB shell button in the top right automatically connects the shell to use whatever database your in.
+
+![That image](image-22.png)
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_use_database.png)
+![Not a blizzard](image-23.png)
 
 ---
 
@@ -60,12 +64,12 @@ Using your `restaurants` collection in the `44661` database, write the MongoDB q
 ### MongoDB Query
 
 ```javascript
-// Your MongoDB query here
+db.restaurants.find({borough:"Queens"})
 ```
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_queens_restaurants.png)
+
 
 ---
 
@@ -76,12 +80,12 @@ Using your `restaurants` collection in the `44661` database, write the MongoDB q
 ### MongoDB Query
 
 ```javascript
-// Your MongoDB query here
+db.restaurants.countDocuments({borough:"Queens"})
 ```
 
 ### Screenshot
 
-![Q4 Screenshot](screenshots/q4_queens_count.png)
+![Airport loop da loop](image-24.png)
 
 ---
 
@@ -92,12 +96,12 @@ Using your `restaurants` collection in the `44661` database, write the MongoDB q
 ### MongoDB Query
 
 ```javascript
-// Your MongoDB query here
+db.restaurants.find({$and:[{borough:"Queens"},{cuisine:"Hamburgers"}]}).count()
 ```
 
 ### Screenshot
 
-![Q5 Screenshot](screenshots/q5_queens_hamburgers.png)
+![Grover from Semsame Street](image-25.png)
 
 ---
 
@@ -110,12 +114,12 @@ Using your `restaurants` collection in the `44661` database, write the MongoDB q
 ### MongoDB Query
 
 ```javascript
-// Your MongoDB query here
+db.restaurants.find({'address.zipcode':"10460"}).count()
 ```
 
 ### Screenshot
 
-![Q6 Screenshot](screenshots/q6_zipcode_count.png)
+![La Cucaracha!](image-26.png)
 
 ---
 
@@ -139,12 +143,12 @@ Your output should resemble:
 ### MongoDB Query
 
 ```javascript
-// Your MongoDB query here
+db.restaurants.find({'address.zipcode':"10460"}).projection({name:1,_id:0})
 ```
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_zipcode_names.png)
+![Names](image-27.png)
 
 ---
 
@@ -159,9 +163,11 @@ Your results should include:
 ### MongoDB Query
 
 ```javascript
-// Your MongoDB query here
+db.restaurants.find({name:{$regex:"IHOP",$options:"i"}}).projection({name:1,_id:0})
 ```
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_ihop_case_insensitive.png)
+![Train #1](image-28.png)
+
+![Train #2](image-29.png)
