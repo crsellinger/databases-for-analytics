@@ -49,11 +49,11 @@ use 44661
 
 Although clicking the Open MongoDB shell button in the top right automatically connects the shell to use whatever database your in.
 
-![That image](image-22.png)
+![That image](screenshots/image-22.png)
 
 ### Screenshot
 
-![Not a blizzard](image-23.png)
+![Not a blizzard](screenshots/image-23.png)
 
 ---
 
@@ -85,7 +85,7 @@ db.restaurants.countDocuments({borough:"Queens"})
 
 ### Screenshot
 
-![Airport loop da loop](image-24.png)
+![Airport loop da loop](screenshots/image-24.png)
 
 ---
 
@@ -101,7 +101,7 @@ db.restaurants.find({$and:[{borough:"Queens"},{cuisine:"Hamburgers"}]}).count()
 
 ### Screenshot
 
-![Grover from Semsame Street](image-25.png)
+![Grover from Semsame Street](screenshots/image-25.png)
 
 ---
 
@@ -119,7 +119,7 @@ db.restaurants.find({'address.zipcode':"10460"}).count()
 
 ### Screenshot
 
-![La Cucaracha!](image-26.png)
+![La Cucaracha!](screenshots/image-26.png)
 
 ---
 
@@ -148,7 +148,7 @@ db.restaurants.find({'address.zipcode':"10460"}).projection({name:1,_id:0})
 
 ### Screenshot
 
-![Names](image-27.png)
+![Names](screenshots/image-27.png)
 
 ---
 
@@ -168,6 +168,6 @@ db.restaurants.find({name:{$regex:"IHOP",$options:"i"}}).projection({name:1,_id:
 
 ### Screenshot
 
-![Train #1](image-28.png)
+![Train #1](screenshots/image-28.png)
 
-![Train #2](image-29.png)
+![Train #2](screenshots/image-29.png)

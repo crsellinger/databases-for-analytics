@@ -31,9 +31,9 @@ Why were these data types selected?
 population should be an integer as you can't have half a person and life expectancy is a decimal because it is an average, which should be a decimal for more accurate life expectancy
 
 ### Screenshot
-![describe country population](image.png)
+![describe country population](screenshots/image.png)
 
-![describe country population](image-1.png)
+![describe country population](screenshots/image-1.png)
 
 ```sql
 DESCRIBE country;
@@ -52,7 +52,7 @@ smallint is only 2 bytes and since this number will only be four digits, this da
 
 ### Screenshot
 
-![desctibe country indepyear](image-2.png)
+![desctibe country indepyear](screenshots/image-2.png)
 
 ```sql
 DESCRIBE country;
@@ -85,7 +85,7 @@ ORDER BY Name;
 
 ### Screenshot
 
-![Q4](image-3.png)
+![Q4](screenshots/image-3.png)
 
 ---
 
@@ -103,7 +103,7 @@ ORDER BY GovernmentForm;
 
 ### Screenshot
 
-![Q5 screenshot](image-4.png)
+![Q5 screenshot](screenshots/image-4.png)
 
 ---
 
@@ -121,7 +121,7 @@ WHERE Continent = 'Oceania';
 
 ### Screenshot
 
-![Q6](image-5.png)
+![Q6](screenshots/image-5.png)
 
 ---
 
@@ -138,7 +138,7 @@ FROM city;
 
 ### Screenshot
 
-![Q7](image-6.png)
+![Q7](screenshots/image-6.png)
 
 ---
 
@@ -156,7 +156,7 @@ WHERE Name = 'Nashville-Davidson' AND CountryCode = 'USA';
 
 ### Screenshot
 
-![Q8](image-7.png)
+![Q8](screenshots/image-7.png)
 
 ---
 
@@ -174,7 +174,7 @@ VALUES ('NAR', 'Narnia', 'Europe', 'Fantasy', 1000000);
 
 ### Screenshot
 
-![Q9](image-8.png)
+![Q9](screenshots/image-8.png)
 
 ---
 
@@ -191,4 +191,4 @@ WHERE Code = 'NAR';
 
 ### Screenshot
 
-![Q10](image-9.png)
+![Q10](screenshots/image-9.png)

@@ -32,7 +32,7 @@ select count(ID)
 from city
 ```
 
-![teehee](image-10.png)
+![teehee](screenshots/image-10.png)
 
 ---
 
@@ -50,7 +50,7 @@ left join countrylanguage cl on c.Code = cl.CountryCode
 
 ### Screenshot
 
-![mysterious cube](image-11.png)
+![mysterious cube](screenshots/image-11.png)
 
 ---
 
@@ -68,7 +68,7 @@ left join countrylanguage cl on c.Code = cl.CountryCode
 
 ### Screenshot
 
-![circular redundancy](image-12.png)
+![circular redundancy](screenshots/image-12.png)
 
 ---
 
@@ -111,7 +111,7 @@ FROM country
 
 ### Screenshot
 
-![Snowman without a top hat](image-13.png)
+![Snowman without a top hat](screenshots/image-13.png)
 
 ---
 
@@ -130,7 +130,7 @@ INNER join country on country.Code = city.CountryCode
 
 ### Screenshot
 
-![Easter Egg](image-15.png)
+![Easter Egg](screenshots/image-15.png)
 
 ---
 
@@ -150,7 +150,7 @@ GROUP BY c.Name
 
 ### Screenshot
 
-![Now this is pod racing](image-16.png)
+![Now this is pod racing](screenshots/image-16.png)
 
 ---
 
@@ -170,7 +170,7 @@ group by countrylanguage.Language
 
 ### Screenshot
 
-![Ding Dong](image-17.png)
+![Ding Dong](screenshots/image-17.png)
 
 ---
 
@@ -194,7 +194,7 @@ order by count(cl.Language) DESC
 
 ### Screenshot
 
-![Greenland](image-18.png)
+![Greenland](screenshots/image-18.png)
 
 ---
 
@@ -214,7 +214,7 @@ where c.District like '–' or c.District = null or c.District = ''
 
 ### Screenshot
 
-![Mug Rootbeer](image-19.png)
+![Mug Rootbeer](screenshots/image-19.png)
 
 ---
 
@@ -233,4 +233,4 @@ from city
 
 ### Screenshot
 
-![Joopy](image-20.png)
+![Joopy](screenshots/image-20.png)
