@@ -42,7 +42,7 @@ ORDER BY count(cl.Language) DESC
 
 ### Screenshot
 
-![Q1 Screenshot](screenshots/q1_official_language_counts.png)
+![Helloooo](screenshots/Exercise4_1.png)
 
 ---
 
