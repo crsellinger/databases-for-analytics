@@ -55,12 +55,21 @@ After the `create_engine` command is executed, **what are the three statements r
 ### Python Code
 
 ```python
-# Your three Python statements here
+sql_statement = """SELECT c.Name, count(cl.Language), count(cl.IsOfficial)
+FROM country c
+LEFT JOIN countrylanguage cl on cl.CountryCode = c.Code
+WHERE cl.IsOfficial = 'T'
+GROUP BY c.Name
+HAVING count(cl.Language) > 2
+ORDER BY count(cl.Language) DESC"""
+
+df = pd.read_sql_query(sql_statement, engine)
+print(df.head()) # Or df if you want the whole dataframe
 ```
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_jupyter_query_results.png)
+![Da oter imaje](screenshots/Exercise4_2.png)
 
 ---
 
@@ -75,9 +84,17 @@ Using **Jupyter Notebooks**, write the Python code needed to produce the followi
 ### Python Code
 
 ```python
-# Your Python code here
+# Display graph of results
+import matplotlib.pyplot as plt
+
+# plot for bar graph of results
+plt.figure(figsize=(10, 6)) # so that x labels aren't smooshed together
+plt.bar(df['Name'], df['count(cl.Language)'])
+plt.xlabel('Country Name')
+plt.ylabel('Number of Official Languages')
+plt.title('Countries with More Than 2 Official Languages')
 ```
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_countries_graph.png)
+![da otter oter imjaee](screenshots/Exercise4_3.png)
