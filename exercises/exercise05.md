@@ -1,8 +1,8 @@
 # Exercise 05: SQLDA Database - Dates, Data Quality, Arrays, and JSON
 
-- Name:
+- Name: Caleb Sellinger
 - Course: Database for Analytics
-- Module:
+- Module: 5
 - Database Used:  `sqlda` (Sample Datasets)
 - Tools Used: PostgreSQL (pgAdmin or psql)
 
@@ -42,12 +42,15 @@ year
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT distinct
+	EXTRACT(year FROM sent_date) AS Year
+FROM emails
+ORDER By Year ASC;
 ```
 
 ### Screenshot
 
-![Q1 Screenshot](screenshots/q1_email_years.png)
+![A horse with no name](screenshots/M5_1.png)
 
 ---
 
@@ -65,12 +68,16 @@ count   year
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+	Count(email_id), EXTRACT(year FROM sent_date) AS year
+From emails
+GROUP BY sent_date
+ORDER BY year ASC;
 ```
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_message_count_by_year.png)
+![I have no mouth, but I must scream](screenshots/M5_2.png)
 
 ---
 
@@ -86,12 +93,18 @@ Only include emails that contain **both** a sent date and an opened date.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT
+	sent_date, opened_date, opened_date - sent_date AS Interval
+From emails
+WHERE
+	sent_date IS NOT null
+	and
+	opened_date IS NOT null
 ```
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_sent_opened_interval.png)
+![When the debate is lost, slander becomes the tool of the loser.](screenshots/M5_3.png)
 
 ---
 
@@ -102,12 +115,14 @@ Using the `sqlda` database, write the SQL needed to show emails that contain an 
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT *
+FROM emails
+WHERE opened_date < sent_date
 ```
 
 ### Screenshot
 
-![Q4 Screenshot](screenshots/q4_opened_before_sent.png)
+![alt text](screenshots/M5_4.png)
 
 ---
 
@@ -119,11 +134,11 @@ After looking at the data, **why is this the case?**
 
 ### Answer
 
-_Write your explanation here._
+No timezone. So someone in EST could send someone in PST an email and they could open it up earlier than it was sent.
 
 ### Screenshot (if requested by instructor)
 
-![Q5 Screenshot](screenshots/q5_explain_date_issue.png)
+![To live is to suffer, to survive is to find some meaning in the suffering](screenshots/M5_5.png)
 
 ---
 
@@ -160,8 +175,20 @@ CREATE TEMP TABLE customer_dealership_distance AS (
 
 ### Answer
 
-_Write your explanation here._
+It creates 3 temporary tables (customer_points, dealership_points, and customer_dealership_distance) using the data pulled from the subqueries. These tables are dropped after the session ends. Customer_points and Dealership_points are contain longitude and latitude of each respective dealer and customer id. The resulting table, customer_dealerships_distance, gives the Euclidean distance between every customer and dealership.
 
+Customer_points has columns:
+- customer_id
+- lng_lat_point
+
+Dealership_points has columns:
+- dealership_id
+- lng_lat_point
+
+customer_dealership_distance
+- customer_id
+- dealership_id
+-
 ---
 
 ## Question 7
@@ -177,12 +204,15 @@ For example - dealership 1 is below:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT dealership_id, ARRAY_AGG(last_name || ', ' ||first_name)
+FROM salespeople
+GROUP BY 1
+ORDER BY dealership_id ASC;
 ```
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_salespeople_array_by_dealership.png)
+![alt text](screenshots/M5_7.png)
 
 ---
 
@@ -202,12 +232,19 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT d.dealership_id, d.state,
+	ARRAY_AGG(s.last_name || ', ' || s.first_name) AS list_of_salespeople,
+	COUNT(s.salesperson_id) AS Num_of_salespeople
+FROM salespeople s
+LEFT JOIN dealerships d
+	ON d.dealership_id = s.dealership_id
+GROUP BY d.dealership_id, d.state
+ORDER BY d.state ASC;
 ```
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_salespeople_array_state_count.png)
+![A pessimist is an optimist in full possession of the facts.](screenshots/M5_8.png)
 
 ---
 
@@ -218,12 +255,13 @@ Using the `sqlda` database, write the SQL needed to convert the **customers** ta
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT row_to_json(c, TRUE)
+FROM customers c
 ```
 
 ### Screenshot
 
-![Q9 Screenshot](screenshots/q9_customers_to_json.png)
+![The music is not in the notes, but in the silence between](screenshots/M5_9.png)
 
 ---
 
@@ -244,9 +282,19 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT row_to_json(s, TRUE)
+FROM (
+	SELECT d.dealership_id, d.state,
+		ARRAY_AGG(s.last_name || ', ' || s.first_name) AS list_of_salespeople,
+		COUNT(s.salesperson_id) AS Num_of_salespeople
+	FROM salespeople s
+	LEFT JOIN dealerships d
+		ON d.dealership_id = s.dealership_id
+	GROUP BY d.dealership_id, d.state
+	ORDER BY d.state ASC)
+AS s
 ```
 
 ### Screenshot
 
-![Q10 Screenshot](screenshots/q10_salespeople_array_to_json.png)
+![Good people do not need laws to tell them to act responsibly, while bad people will find a way around the laws](screenshots/M5_10.png)
