@@ -1,7 +1,7 @@
 # Module 6 - Exercise 1: Creating a Data Warehouse
 From the Operational Model to the Dimensional Model
 
-- Name:
+- Name: Caleb Sellinger
 - Course: Database for Analytics
 - Module: 6
 
@@ -107,7 +107,7 @@ Save your diagram image in this repo and embed it below.
 
 #### Diagram
 
-![Star Schema Diagram](star-schema.png)
+![star-schema](screenshots/star-schema.png)
 
 ---
 
