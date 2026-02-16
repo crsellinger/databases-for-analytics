@@ -145,9 +145,9 @@ The customer table contains customer name and zipcode (extracted from customer.a
 
 ```sql
 -- Average amount spent per customer per day
-SELECT orderDate, custNum, AVG(amount)
+SELECT date_key, custNum, AVG(amount)
 FROM ft_daily_sales
-GROUP BY custNum, orderDate
+GROUP BY custNum, date_key
 ORDER BY custNum ASC;
 ```
 
@@ -162,12 +162,12 @@ GROUP BY c.zipcode
 The parts table contains category and unit price to answer **How many appliance items were sold during [date]** or any other part related queries.
 
 ```sql
-SELECT f.orderDate, p.category, COUNT(f.partNum)
+SELECT f.date_key, p.category, COUNT(f.partNum)
 FROM ft_daily_sales f
 JOIN dm_parts p
 ON p.partNum = f.partNum
-WHERE p.category = 'Appliance' AND f.orderDate = [date]
-GROUP BY p.category, f.orderDate
+WHERE p.category = 'Appliance' AND f.date_key = [date]
+GROUP BY p.category, f.date_key
 ```
 
 The date table contains full date and extracts for day, month, year, in order to reduce grain to daily aggregations.
