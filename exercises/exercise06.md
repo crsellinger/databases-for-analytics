@@ -171,3 +171,5 @@ GROUP BY p.category, f.date_key
 ```
 
 The date table contains full date and extracts for day, month, year, in order to reduce grain to daily aggregations.
+
+These tables satisfy the non-requirements as they do not contain unneccessary information such as inventory, customer finances, or sales rep data.
