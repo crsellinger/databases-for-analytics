@@ -10,6 +10,13 @@
 ### Initial Data Source
 ***
 
+Minimum requirements on dataset:
+- at least 3 tables
+- One table must have at least 1000 rows
+- Other 2 must have at least 100 rows
+- One *date*, one *numeric*, and one *string* data type
+
+URL: https://www.sqlservertutorial.net/getting-started/sql-server-sample-database/
 
 
 ### Format of Data
