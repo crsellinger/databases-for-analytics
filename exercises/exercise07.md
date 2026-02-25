@@ -3,7 +3,7 @@
 - Name: Caleb Sellinger
 - Course: Database for Analytics
 - Module: 7
-- Tools Used: 
+- Tools Used:
 
 ***
 
@@ -16,8 +16,9 @@ Minimum requirements on dataset:
 - Other 2 must have at least 100 rows
 - One *date*, one *numeric*, and one *string* data type
 
-URL: https://www.sqlservertutorial.net/getting-started/sql-server-sample-database/
+[Source Data Here](https://www.sqlservertutorial.net/getting-started/sql-server-sample-database/)
 
+Converted sql to psql in files data folder
 
 ### Format of Data
 **Include count of column and rows**
@@ -28,9 +29,9 @@ URL: https://www.sqlservertutorial.net/getting-started/sql-server-sample-databas
 
 Tables include:
 
- - 
- - 
- - 
+ -
+ -
+ -
 
  | Column | Description |
  | --- | --- |
