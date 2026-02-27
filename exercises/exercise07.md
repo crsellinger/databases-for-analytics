@@ -141,3 +141,5 @@ ORDER BY COUNT(b.brand_name) DESC;
 ```
 
 This query finds the brand that each customer has ordered most.
+
+![Heyyy whooaaa yippeeee](image-2.png)
